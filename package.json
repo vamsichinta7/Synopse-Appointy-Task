@@ -1,0 +1,28 @@
+{
+  "name": "project-synapse",
+  "version": "1.0.0",
+  "description": "AI-Powered Second Brain - MERN Stack Application",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start"
+  },
+  "keywords": [
+    "second-brain",
+    "knowledge-management",
+    "ai",
+    "mern",
+    "claude",
+    "semantic-search"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}

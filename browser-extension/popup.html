@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synapse - Save to Brain</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1>Synapse</h1>
+      </div>
+      <div class="status" id="status">
+        <span class="status-dot"></span>
+        <span class="status-text">Not Connected</span>
+      </div>
+    </div>
+
+    <!-- Settings Toggle -->
+    <div class="settings-toggle">
+      <button id="settingsBtn" class="icon-btn" title="Settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Settings Panel (Hidden by default) -->
+    <div id="settingsPanel" class="settings-panel hidden">
+      <h3>Extension Settings</h3>
+      <div class="form-group">
+        <label for="serverUrl">Server URL</label>
+        <input type="text" id="serverUrl" placeholder="http://localhost:5000/api" />
+      </div>
+      <div class="form-group">
+        <label for="apiToken">API Token</label>
+        <input type="password" id="apiToken" placeholder="Your auth token" />
+      </div>
+      <button id="saveSettings" class="btn btn-primary">Save Settings</button>
+    </div>
+
+    <!-- Quick Save Section -->
+    <div class="quick-save">
+      <h2>Quick Save</h2>
+      <div class="quick-actions">
+        <button id="savePageBtn" class="action-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+            <polyline points="17 21 17 13 7 13 7 21"/>
+            <polyline points="7 3 7 8 15 8"/>
+          </svg>
+          <span>Save This Page</span>
+        </button>
+
+        <button id="saveSelectionBtn" class="action-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+          </svg>
+          <span>Save Selection</span>
+        </button>
+
+        <button id="screenshotBtn" class="action-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Screenshot</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Custom Save Section -->
+    <div class="custom-save">
+      <h2>Custom Capture</h2>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category">
+          <option value="">Auto-detect</option>
+          <option value="article">Article</option>
+          <option value="product">Product</option>
+          <option value="todo">To-Do</option>
+          <option value="video">Video</option>
+          <option value="book">Book</option>
+          <option value="paper">Paper</option>
+          <option value="idea">Idea</option>
+          <option value="note">Note</option>
+          <option value="quote">Quote</option>
+          <option value="others">Others</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="caption">Caption (Optional)</label>
+        <textarea id="caption" rows="2" placeholder="Add a personal note..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="tags">Tags (Optional)</label>
+        <input type="text" id="tags" placeholder="tag1, tag2, tag3" />
+      </div>
+
+      <button id="customSaveBtn" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+        </svg>
+        Save to Brain
+      </button>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div id="message" class="message hidden"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
