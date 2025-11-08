@@ -4,7 +4,6 @@
 
 Synapse is an intelligent personal knowledge management system that uses AI to help you capture, organize, and retrieve information effortlessly. Built with the MERN stack and powered by Claude AI.
 
-![Synapse Demo](https://via.placeholder.com/800x400/0f172a/0ea5e9?text=Synapse+Dashboard)
 
 ## ✨ Features
 
